@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-import ContactCTA from '../components/ContactCTA.astro';
+import CallToAction from '../components/CallToAction.astro';
 import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout title="Blogs | Alex Appleget" description="Alex Appleget's blogs.">
@@ -14,7 +14,12 @@ import Hero from '../components/Hero.astro';
 			>
 			</Hero>
 		</main>
-		<ContactCTA />
+		<div class="blogs">
+			<CallToAction href="/decouplefunctionsblog/">
+				Decouple Functions
+				<Icon icon="paper-plane-tilt" size="1.2em" />
+			</CallToAction>
+		</div>
 	</div>
 </BaseLayout>
 
@@ -59,6 +64,12 @@ import Hero from '../components/Hero.astro';
 		text-decoration-color: currentColor;
 	}
 
+	.blogs {
+		width: 50%;
+		margin: 0 auto;
+		margin-top: 50px;
+	}
+
 	@media (min-width: 50em) {
 		.about {
 			display: grid;
@@ -72,6 +83,12 @@ import Hero from '../components/Hero.astro';
 		section {
 			display: contents;
 			font-size: var(--text-lg);
+		}
+
+		.blogs {
+			width: 50%;
+			margin: 0 auto;
+			margin-top: 50px;
 		}
 	}
 </style>
