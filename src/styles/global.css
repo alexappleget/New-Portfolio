@@ -130,9 +130,8 @@
     0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
-html,
-body {
-  min-height: 100vh;
+html {
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -143,7 +142,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
-  height: 100vh;
+  height: 100%;
 }
 
 *,
