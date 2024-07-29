@@ -132,9 +132,8 @@
 
 html,
 body {
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 body {
@@ -150,7 +149,6 @@ body {
 *::before {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 img {
