@@ -270,10 +270,3 @@ h5 {
     gap: 12rem;
   }
 }
-
-@media (max-width: 600px) {
-  html,
-  body {
-    height: 95%;
-  }
-}
