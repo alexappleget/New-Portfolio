@@ -15,8 +15,12 @@ import Icon from '../components/Icon.astro';
 			</Hero>
 		</main>
 		<div class="blogs">
-			<CallToAction href="/decouplefunctionsblog/">
+			<CallToAction href="/blogs/decouplefunctionsblog/">
 				Decouple Functions
+				<Icon icon="paper-plane-tilt" size="1.2em" />
+			</CallToAction>
+			<CallToAction href="###">
+				Blog 2 - Coming Soon
 				<Icon icon="paper-plane-tilt" size="1.2em" />
 			</CallToAction>
 		</div>
@@ -68,7 +72,9 @@ import Icon from '../components/Icon.astro';
 		width: 50%;
 		margin: 0 auto;
 		margin-top: 50px;
-		padding-bottom: 200px;
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
 	}
 
 	@media (min-width: 50em) {
