@@ -9,6 +9,8 @@ tags:
   - Functional Engineering
   - Frontend Engineering
   - Appwrite
+  - NextJS
+  - Typescript
 ---
 
 Gridiron Survivor is an open source project building an NFL Survivor pool SaaS application. The individuals on this team operate using a corporate process to ensure the highest quality of production.
