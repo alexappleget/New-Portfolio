@@ -4,11 +4,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 ---
 
-<BaseLayout title="Decouple Functions | Alex Appleget" description="Blog post about decoupling functions by Alex Appleget">
+<BaseLayout title="Extract Functions for Testing | Alex Appleget" description="Blog post about extracting functions for testing by Alex Appleget">
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
-				title="Decouple Functions Blog"
+				title="Extracting a Function for Testing"
 				tagline="By: Alex Appleget"
 			>
 			</Hero>
@@ -16,15 +16,15 @@ import Hero from '../../components/Hero.astro';
 			<section>
 				<div class="content">
             <p>
-              Decoupling a function can be very challenging at first. My first time it
-              took me weeks to figure it out for a certain function that I had to
-              decouple and then test. I hope that after this blog, I can teach you how
-              to decouple functions and be more efficient as a software engineer.
+              Extracting a function can be very challenging at first. My first time it
+              took me a while to figure it out for a certain function that I had to
+              extract and then test. I hope that after this blog, I can teach you how
+              to extract a function from a component and be more efficient as a software engineer.
             </p>
             <p>
-              What is decoupling? Decoupling is when you take a function from inside a
-              component, extract it into another file, and then export it. This allows
-              you to import the function into testing to be used.
+              What is extracting? Extracting is when you take a function from inside a
+              component, move it into another file, and then export it. This allows
+              you to directly import the function into a test file to be used without mocking.
             </p>
             <p>
               Before we begin, I want to point out that I will be using Next.js with
@@ -33,24 +33,24 @@ import Hero from '../../components/Hero.astro';
               things.
             </p>
             <p>
-              When decoupling a function, it provides many benefits. Some of these
+              When extracting a function, it provides many benefits. Some of these
               benefits include:
             </p>
             <ol>
               <li>
-                Reusability: One of the coolest things about decoupling a function is
-                it`s reusability. When a function gets decoupled, you can then import
+                Reusability: One of the coolest things about extracting a function is
+                it`s reusability. When a function gets extracted, you can then import
                 it anywhere in your project to be used.
               </li>
               <li>
                 Testability: Testing is a crucial part in any software engineer`s task
-                at hand. Testing ensures reliability of your software. Decoupling
+                at hand. Testing ensures reliability of your software. Extracting
                 enables better unit testing because you can isolate the function and
                 test it individually.
               </li>
             </ol>
             <p>
-              Now that we learned what decoupling is and why it`s useful, let`s get
+              Now that we learned what extracting is and why it`s useful, let`s get
               started.
             </p>
             <p>
@@ -68,13 +68,13 @@ import Hero from '../../components/Hero.astro';
               have to test that they work as intended by doing a unit test of the
               function, but I won`t be able to test the function because it is
               currently inside of the AuthContextProvider component. This is where
-              decoupling comes into use. I now have to take this function out and put
+              extracting comes into use. I now have to take this function out and put
               it inside of another file to then be exported. And the file will look
               something like this.
             </p>
             <img
-              src="/assets/Decouple-first.png"
-              alt="the function that was decoupled into another file all by itself"
+              src="/assets/Extract-first.png"
+              alt="the function that was extracted into another file all by itself"
             />
             <p>
               As you can see, there are a ton of dependency errors. Now that the
@@ -116,46 +116,46 @@ import Hero from '../../components/Hero.astro';
                 () ={">"} Promise{"<"}IUser {"|"} undefined{">"}
               </span>
               ? That is it`s type that you will need to define it inside your
-              decoupled function. So, let`s go back to the decoupled function with the
+              extracted function. So, let`s go back to the extracted function with the
               knowledge we now know. Remember those pesky errors from the function not
               knowing it? Well use what you have learned to figure out the types for
               `user` and `router`. It will look something like this:
             </p>
             <img
               src="/assets/Prop-objects.png"
-              alt="picture showing what the new decoupled function will look like with the props passed in"
+              alt="picture showing what the new extracted function will look like with the props passed in"
             />
             <p>
               Now, we just have to deal with these last 2 errors that are new. Once
               again, the function doesn`t understand what these 2 things are. We can
               easily define them. First, I have to go back to the original function
-              (before it was decoupled), and I hover over `UserCredentials`:
+              (before it was extracted), and I hover over `UserCredentials`:
             </p>
             <video src="/assets/UserCredentials.mp4" autoplay loop muted />
             <p>
               This let`s me know that `UserCredentials` will consist of an email and
               password in the form of strings. As for `AppRouterInstance`, that is
               just something that you can easily import from the router that you use.
-              Inside the decoupled function file, everything will look like this:
+              Inside the extracted function file, everything will look like this:
             </p>
             <img
               src="/assets/Final-Props.png"
-              alt="decoupled function with the last 2 types defined"
+              alt="extracted function with the last 2 types defined"
             />
             <p>
               We imported for `AppRouterInstance` and then we quickly explain
-              `UserCredentials` inside of the decoupled function file. Now the
-              decoupled function is now complete!
+              `UserCredentials` inside of the extracted function file. Now the
+              extracted function is now complete!
             </p>
             <p>
-              Our next step will be to take this new decoupled function and then
+              Our next step will be to take this new extracted function and then
               import back to where it was to begin with. We go back inside the
               AuthContextProvider component, import our new function into the file and
               then call our new function like this:
             </p>
             <img
               src="/assets/ImportFunction.png"
-              alt="importing the decoupled function to be used"
+              alt="importing the extracted function to be used"
             />
             <img
               src="/assets/FinalLook.png"
@@ -164,13 +164,13 @@ import Hero from '../../components/Hero.astro';
             <p>
               Now the new function has been imported back into where it is supposed to
               go and is being called now with each prop that was defined for it. This
-              allows the decoupled function to receive those 3 things and know what to
+              allows the extracted function to receive those 3 things and know what to
               do with them.
             </p>
-            <p>We decoupled our first function! Let`s recap on what we did:</p>
+            <p>We extracted our first function! Let`s recap on what we did:</p>
             <ul>
               <li>
-                First we created a seperate file to be able to decouple the
+                First we created a seperate file to be able to extract the
                 loginAccount() function.
               </li>
               <li>
@@ -178,15 +178,15 @@ import Hero from '../../components/Hero.astro';
                 defined them accordingly.
               </li>
               <li>
-                After fixing the decoupled function, we exported it. Then imported it
+                After fixing the extracted function, we exported it. Then imported it
                 back into AuthContextProvider, where it first belonged, and then
                 called the new function.
               </li>
             </ul>
             <p>
-              The function is now decoupled and able to be exported to be used
+              The function is now extracted and able to be exported to be used
               anywhere in your project. It is ready to be tested in our unit testing.
-              Since it is decoupled, we can now import it into our test file to be
+              Since it is extracted, we can now import it into our test file to be
               able to test the function itself.
             </p>
             <p>
@@ -216,7 +216,7 @@ import Hero from '../../components/Hero.astro';
               that the error notification shows up.
             </p>
             <p>
-              And with this, we have succeeded on decoupling our first function! I
+              And with this, we have succeeded on extracting our first function! I
               hope this has helped a lot and if you have any questions please feel
               free to DM me on Twitter or LinkedIn with the links below.
             </p>
